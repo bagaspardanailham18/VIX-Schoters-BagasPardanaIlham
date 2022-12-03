@@ -1,13 +1,18 @@
 package com.bagaspardanailham.newsapp.ui.home
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
+import androidx.lifecycle.*
+import com.bagaspardanailham.newsapp.data.remote.Result
+import com.bagaspardanailham.newsapp.data.NewsRepository
+import com.bagaspardanailham.newsapp.data.remote.responses.NewsResponse
+import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class HomeViewModel : ViewModel() {
+@HiltViewModel
+class HomeViewModel @Inject constructor(private val newsRepository: NewsRepository) : ViewModel() {
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is home Fragment"
-    }
-    val text: LiveData<String> = _text
+    fun getTopHeadlineNews(): LiveData<Result<NewsResponse>> = newsRepository.getTopHeadlineNews()
+
+    fun getNews(): LiveData<Result<NewsResponse>> = newsRepository.getNews()
+
 }
