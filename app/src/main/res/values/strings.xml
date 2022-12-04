@@ -5,4 +5,5 @@
     <string name="title_notifications">Notifications</string>
     <string name="title_bookmark">Bookmark</string>
     <string name="title_profile">Profile</string>
+    <string name="bookmark_news_menu_text">Bookmark News</string>
 </resources>
